@@ -1,0 +1,76 @@
+using System;
+
+namespace Nuoli_kauppa
+{
+    class Nuoli
+    {
+        static void Main(string[] args)
+        {
+
+            int woodPrice = 3;
+            int ironPrice = 5;
+            int diamondPrice = 50;
+            int leafPrice = 0;
+            int chickenFeatherPrice = 1;
+            int roosterFeatherPrice = 5;
+            float shaftPrice = 0.05f;
+
+
+
+
+
+        string tip = "";
+            while (tip != "puu" && tip != "teräs" && tip != "timantti")
+            {
+                Console.WriteLine("----------------------------------------------");
+                Console.WriteLine("Minkänlainen kärki? (puu, teräs vai timantti?");
+                tip = Console.ReadLine();
+            }
+
+            string fletching = "";
+            while (fletching != "lehti" && fletching != "kanansulka" && fletching != "kotkansulka")
+            {
+                Console.WriteLine("----------------------------------------------");
+                Console.WriteLine("Minkänlaiset sulat? (lehti, kanansulka, vai kotkansulka");
+                fletching = Console.ReadLine();
+            }
+
+            int shaft = 0;
+            while (shaft < 60 || shaft > 100)
+            {
+                Console.WriteLine("----------------------------------------------");
+                Console.WriteLine("Nuolen pituus (60-100cm)");
+                shaft = int.Parse(Console.ReadLine());
+            }
+
+            float tipPrice = 0;
+            float fletchingPrice = 0;
+            float shaftBrice = shaft * shaftPrice;
+
+            if (tip == "puu")
+                tipPrice = woodPrice;
+            else if (tip == "teräs")
+                tipPrice = ironPrice;
+            else if (tip == "timantti")
+                tipPrice = diamondPrice;
+
+            if (fletching == "lehti")
+                fletchingPrice = leafPrice;
+            else if (fletching == "kanansulka")
+                fletchingPrice = chickenFeatherPrice;
+            else if (fletching == "kotkansulka")
+                fletchingPrice = roosterFeatherPrice;
+
+            PalautaHinta();
+            
+            void PalautaHinta()
+            {
+                float arrowPrice = tipPrice + fletchingPrice + shaftBrice;
+
+                Console.WriteLine($"Nuolen hinta on {arrowPrice} kultaa.");
+            }
+
+
+        }
+    }
+}
